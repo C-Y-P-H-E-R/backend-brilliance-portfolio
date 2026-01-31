@@ -7,20 +7,20 @@ const Contact = () => {
     {
       icon: Mail,
       label: "Email",
-      value: "engineer@example.com",
-      href: "mailto:engineer@example.com",
+      value: "sde.kushagra@gmail.com",
+      href: "mailto:sde.kushagra@gmail.com",
     },
     {
       icon: Github,
       label: "GitHub",
-      value: "github.com/engineer",
-      href: "https://github.com",
+      value: "github.com/c-y-p-h-e-r",
+      href: "https://github.com/C-Y-P-H-E-R",
     },
     {
       icon: Linkedin,
       label: "LinkedIn",
-      value: "linkedin.com/in/engineer",
-      href: "https://linkedin.com",
+      value: "linkedin.com",
+      href: "https://linkedin.com/in/kushagrasharmaofficial",
     },
     {
       icon: MapPin,
