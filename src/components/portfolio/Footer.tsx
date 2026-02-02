@@ -29,7 +29,7 @@ const Footer = () => {
           {/* Social Links */}
           <div className="flex items-center gap-4">
             <a
-              href={social["github"]["url"]}
+              href="https://github.com/C-Y-P-H-E-R/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
@@ -37,7 +37,7 @@ const Footer = () => {
               <Github className="w-5 h-5" />
             </a>
             <a
-              href={social["linkedin"]["url"]}
+              href="https://linkedin.com/in/kushagrasharmaofficial/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
@@ -45,7 +45,7 @@ const Footer = () => {
               <Linkedin className="w-5 h-5" />
             </a>
             <a
-              href={social["mail"]["url"]}
+              href="mailto:sde.kushagra@gmail.com"
               className="text-muted-foreground hover:text-primary transition-colors"
             >
               <Mail className="w-5 h-5" />
