@@ -1,6 +1,22 @@
 import { Github, Linkedin, Mail, Heart } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const Footer = () => {
+
+  const [social, setSocial] = useState([])
+
+  useEffect(() => {
+    const fetchdata = async () => {
+      let response = await fetch(
+        "https://portfolio-backend-b3xe.onrender.com/go/api/v1/socials"
+      );
+      const data = await response.json()
+      setSocial(data.data)
+    }
+
+    fetchdata();
+  }, [])
+
   return (
     <footer className="py-8 border-t border-border">
       <div className="section-container">
@@ -13,7 +29,7 @@ const Footer = () => {
           {/* Social Links */}
           <div className="flex items-center gap-4">
             <a
-              href="https://github.com"
+              href={social["github"]["url"]}
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
@@ -21,7 +37,7 @@ const Footer = () => {
               <Github className="w-5 h-5" />
             </a>
             <a
-              href="https://linkedin.com"
+              href={social["linkedin"]["url"]}
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
@@ -29,7 +45,7 @@ const Footer = () => {
               <Linkedin className="w-5 h-5" />
             </a>
             <a
-              href="mailto:engineer@example.com"
+              href={social["mail"]["url"]}
               className="text-muted-foreground hover:text-primary transition-colors"
             >
               <Mail className="w-5 h-5" />
@@ -38,7 +54,7 @@ const Footer = () => {
 
           {/* Right side */}
           <p className="text-sm text-muted-foreground font-mono">
-            © 2024 — Software Engineer
+            © 2026 — Software Engineer
           </p>
         </div>
       </div>

@@ -1,34 +1,82 @@
 import { motion } from "framer-motion";
 import { Mail, Github, Linkedin, MapPin, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
 
 const Contact = () => {
-  const contactLinks = [
-    {
-      icon: Mail,
-      label: "Email",
-      value: "sde.kushagra@gmail.com",
-      href: "mailto:sde.kushagra@gmail.com",
-    },
-    {
-      icon: Github,
-      label: "GitHub",
-      value: "github.com/c-y-p-h-e-r",
-      href: "https://github.com/C-Y-P-H-E-R",
-    },
-    {
-      icon: Linkedin,
-      label: "LinkedIn",
-      value: "linkedin.com",
-      href: "https://linkedin.com/in/kushagrasharmaofficial",
-    },
-    {
-      icon: MapPin,
-      label: "Location",
-      value: "Noida, India",
-      href: null,
-    },
-  ];
+  const [contactLinks, setContactLinks] = useState([])
+
+  useEffect(() => {
+    setContactLinks([])
+    const fetchdata = async () => {
+      let response = await fetch(
+        "https://portfolio-backend-b3xe.onrender.com/go/api/v1/socials"
+      );
+      const data = await response.json()
+
+      Object.entries(data.data).forEach(([key,value]) => {
+        switch(key) {
+          case "github":
+            setContactLinks(prev => [
+              ...prev,
+              {
+                icon: Github,
+                label: "GitHub",
+                value: "github.com/c-y-p-h-e-r",
+                href: "https://github.com/C-Y-P-H-E-R",
+              }
+            ])
+            break;
+          case "mail":
+            setContactLinks(prev => [
+              ...prev,
+              {
+                icon: Github,
+                label: "Email",
+                value: "sde.kushagra@gmail.com",
+                href: "mailto:sde.kushagra@gmail.com",
+              }
+            ])
+            break;
+          case "leetcode":
+            setContactLinks(prev => [
+              ...prev,
+              {
+                icon: Github,
+                label: "Leetcode",
+                value: "SoloLevelerIndia",
+                href: "https://leetcode.com/u/sololevelerIndia/",
+              }
+            ])
+            break;
+          case "linkedin":
+            setContactLinks(prev => [
+              ...prev,
+              {
+                icon: Linkedin,
+                label: "Linkedin",
+                value: "linkedin.com",
+                href: "https://linkedin.com/in/kushagrasharmaofficial",
+              }
+            ])
+            break;
+          default:
+            console.log("switch default ran!")
+            setContactLinks(prev => [
+              ...prev,
+              {
+                icon: MapPin,
+                label: "Location",
+                value: "Noida, India",
+                href: null,
+              }
+            ])
+        }
+      })
+    };    
+
+    fetchdata();
+  }, [])
 
   return (
     <section id="contact" className="py-24 relative bg-gradient-subtle">
